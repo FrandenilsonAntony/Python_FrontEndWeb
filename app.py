@@ -1,5 +1,7 @@
 from flask import Flask, render_template
-app = Flask("Meu App")
+
+app = Flask(__name__)
+
 
 posts = [
     {
@@ -17,3 +19,7 @@ posts = [
 def exibir_entradas():
     entradas = posts #Mock das postagens
     return render_template('exibir_entradas.html', entradas=entradas)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
