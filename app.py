@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request, session, flash, redirect, url_for, abort
 from posts import  posts
+import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'pudim'
+
+app.config.from_object(__name__)
+DATABASE = "banco.db"
+
+def conectar():
+    return sqlite3.connect(DATABASE)
 
 
 @app.route('/')
